@@ -1,6 +1,7 @@
-//For arduino UNO 
+//ver 2.3 for UNO     
 
-int led_pwm_pin_1 = 9; // initialise led pin 1  pwm pins on arduino uno are 3, 5, 9, 10 ,11 etc
+
+int led_pwm_pin_1 = 9; // initialise led pin 1  pwm pins on arduino uno are 3, 5, 9, 10 ,11 etc  use gpio pins  5,4,14,12 for esp8266,25,26,34,35,36,39 for esp32
 int led_pwm_pin_2 = 10; // initialise led pin 2
 int led_pwm_pin_3 = 11; // initialise led pin 3 
 void setup() {
