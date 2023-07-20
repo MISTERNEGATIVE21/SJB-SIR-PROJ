@@ -4,11 +4,14 @@
 int led_pwm_pin_1 = 9; // initialise led pin 1  pwm pins on arduino uno are 3, 5, 9, 10 ,11 etc  use gpio pins  5,4,14,12 for esp8266,25,26,34,35,36,39 for esp32
 int led_pwm_pin_2 = 10; // initialise led pin 2
 int led_pwm_pin_3 = 11; // initialise led pin 3 
+int analog_read_pin= A0; // initialise arduino analog pin input
+double analog_value = 0; // optional
 void setup() {
     Serial.begin(9600);
     pinMode(led_pwm_pin_1, OUTPUT); // output mode is set
     pinMode(led_pwm_pin_2, OUTPUT);
     pinMode(led_pwm_pin_3, OUTPUT);
+    pinMode(analog_read_pin, INPUT);
 }
 
 void ledcontroller(int i , int j , int k) {   //passing the valuess
@@ -27,8 +30,11 @@ void loop() {
    
       for (int y=0; y <=255; y++) {        //loop for channel 2
       for (int z=0; z<=255; z++) {         //loop for channel 3
-        sprintf(buffer, " %d %d %d" , x,y,z);       
-        Serial.println(buffer);
+       sprintf(buffer, " %d %d %d" , x,y,z);       
+       Serial.println(buffer);
+       Serial.println( "The analog value is :");
+       analog_value = analogRead(analog_read_pin);
+       Serial.println(analog_value );
        ledcontroller( x , y , z);                    // call the function and pass it
        delay(50); // delay for changing the frequency of duty cycle of the timer set it to 1000ms 
   }
